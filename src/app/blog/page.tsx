@@ -32,12 +32,15 @@ const BlogPage = () => {
       setFilteredPosts(posts);
       
       // Get unique categories
-      const uniqueCategories = ["All", ...new Set(posts.map((post: any) => post.category))];
-      setCategories(uniqueCategories.filter(Boolean));
-      
-      // Get unique authors
-      const uniqueAuthors = ["All", ...new Set(posts.map((post: any) => post.author))];
-      setAuthors(uniqueAuthors.filter(Boolean));
+      // Get unique categories - with type assertion
+const categorySet = new Set(posts.map((post: any) => post.category as string));
+const uniqueCategories = ["All", ...Array.from(categorySet)];
+setCategories(uniqueCategories.filter(Boolean) as string[]);
+
+// Get unique authors - with type assertion
+const authorSet = new Set(posts.map((post: any) => post.author as string));
+const uniqueAuthors = ["All", ...Array.from(authorSet)];
+setAuthors(uniqueAuthors.filter(Boolean) as string[]);
     } catch (error) {
       console.error("Error fetching blog posts:", error);
     } finally {
