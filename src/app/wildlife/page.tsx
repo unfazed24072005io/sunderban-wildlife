@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PawPrint, Bird, Fish, Trees, Activity, Shield, AlertCircle, Info } from "lucide-react";
-
+import { PawPrint, Trees, Bird, Fish, Activity, Shield, AlertCircle, Info, Users } from "lucide-react";
 const WildlifePage = () => {
   const [activeTab, setActiveTab] = useState("animals");
 
